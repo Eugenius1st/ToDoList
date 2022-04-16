@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import ToDoList from "./ToDoList";
+import ToDoList from "./components/07_Refactoring_ToDoList";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500&family=Bebas+Neue&family=Black+Han+Sans&family=Do+Hyeon&family=Source+Sans+Pro:wght@300;400&family=Ubuntu+Mono:ital@1&display=swap');
