@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-export default function ToDoList() {
+export default function FormValidation() {
     const { register, handleSubmit, formState } = useForm();
     const onValid = (data: any) => {
         console.log(data);
