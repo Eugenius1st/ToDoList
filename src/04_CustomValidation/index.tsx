@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export default function ToDoList() {
+export default function CustomValidation() {
     interface IForm {
         email: string;
         firstName: string;
