@@ -8,8 +8,6 @@ interface IForm {
 
 function CreateToDo() {
     const setToDos = useSetRecoilState(toDoState);
-    //useSetRecoilState를 활용하여 atom에 있는 setToDos를 가져오는 거다 !!!
-    // 쩌는 Recoil과 atom 덕에 어떤 prop도 전달할 필요가 없다!
     const { register, handleSubmit, setValue } = useForm<IForm>();
     const handleValid = ({ toDo }: IForm) => {
         setToDos((oldToDos) => [{ text: toDo, id: Date.now(), category: "TO_DO" }, ...oldToDos]);

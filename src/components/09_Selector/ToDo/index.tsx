@@ -4,11 +4,11 @@ import { IToDo, toDoState } from "../../../atoms";
 
 export default function ToDo({ text, category, id }: IToDo) {
     const setToDos = useSetRecoilState(toDoState);
-    //atom을 수정하는 함수이다.
     const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         const {
             currentTarget: { name },
         } = event;
+
         setToDos((oldToDos) => {
             //수정하고자 하는 ToDo의 주소를 찾기 위함
             const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
@@ -23,11 +23,7 @@ export default function ToDo({ text, category, id }: IToDo) {
         <li>
             <span>{text}</span>
             {category !== "DOING" && (
-                // 옵션 상태에 따라 보여지는 것이 다름
                 <button name="DOING" onClick={onClick}>
-                    {/* 방법 1 : 새로운 익명의 함수를 통해 인자를 넘겨준다 
-                                    <button name="DOING" onClick={() => onClick("DOING")}>*/}
-                    {/* 방법 2 : 버튼에 이름을 각각 정해주고  이벤트를 잡아주는 방법*/}
                     Doing
                 </button>
             )}

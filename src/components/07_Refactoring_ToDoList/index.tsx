@@ -2,6 +2,7 @@ import { useRecoilValue } from "recoil";
 import { toDoState } from "../../atoms";
 import CreateToDo from "./CreateToDo";
 import ToDo from "./ToDo";
+//학습목표: 컴포넌트가 서로를 의존하지 않고, 모두가 atom만 바라보게 하자!
 
 export default function ToDoList() {
     const toDos = useRecoilValue(toDoState);
@@ -18,6 +19,7 @@ export default function ToDoList() {
                 {toDos.map((toDo) => (
                     <ToDo key={toDo.id} {...toDo} />
                     //  text={toDo.text} category={toDo.category} id={toDo.id}
+                    //...toDo의 prop이름이 달랐다면 작동하지 않았을 것이다.
                 ))}
             </ul>
         </div>
