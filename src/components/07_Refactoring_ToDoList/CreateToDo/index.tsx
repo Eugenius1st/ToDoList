@@ -12,8 +12,9 @@ function CreateToDo() {
     // 쩌는 Recoil과 atom 덕에 어떤 prop도 전달할 필요가 없다!
     const { register, handleSubmit, setValue } = useForm<IForm>();
     const handleValid = ({ toDo }: IForm) => {
-        setToDos((oldToDos) => [{ text: toDo, id: Date.now(), category: "TO_DO" }, ...oldToDos]);
-        setValue("toDo", "");
+        // setToDos((oldToDos) => [{ text: toDo, id: Date.now(), category: "TO_DO" }, ...oldToDos]);
+        // setValue("toDo", "");
+        //atom을 수정하여 일단 주석처리함
     };
     return (
         <form onSubmit={handleSubmit(handleValid)}>

@@ -12,23 +12,24 @@ export default function ToDoList() {
             <CreateToDo />
             <h2>To Do</h2>
             <ul>
-                {toDo.map((toDo) => (
+                {/* atom을 수정하여 오류나서 주석처리함 */}
+                {/* {toDo.map((toDo) => (
                     <ToDo key={toDo.id} {...toDo} />
-                ))}
+                ))} */}
             </ul>
             <hr />
             <h2>Doing</h2>
             <ul>
-                {doing.map((toDo) => (
+                {/* {doing.map((toDo) => (
                     <ToDo key={toDo.id} {...toDo} />
-                ))}
+                ))} */}
             </ul>
             <hr />
             <h2>Done</h2>
             <ul>
-                {done.map((toDo) => (
+                {/* {done.map((toDo) => (
                     <ToDo key={toDo.id} {...toDo} />
-                ))}
+                ))} */}
             </ul>
             <hr />
         </div>

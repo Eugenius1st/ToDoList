@@ -10,7 +10,8 @@ export default function ToDoList() {
     const [category, setCategory] = useRecoilState(categoryState);
     //atom의 값과 그것을 수정하는 modifier 함수를 반환해준다. category, setCategory
     const onInput = (event: React.FormEvent<HTMLSelectElement>) => {
-        setCategory(event.currentTarget.value);
+        // setCategory(event.currentTarget.value);
+        // atom에서 categories 타입을 지정해주어 오류가 났기에 일단은 주석처리했다..
     };
 
     return (

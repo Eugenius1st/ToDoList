@@ -1,0 +1,40 @@
+모든 것은 toDoState에서 시작되었다.
+
+가장 처음에는 새로 추가하는 toDo 들이 모두 toDoState로 들어갔고
+toDoState에서 모든 toDo를 받아와 보여줬다.
+
+바뀐 것은
+
+여전히 모든 toDo들이 toDoState에 들어가긴 한다.
+새로 toDo를 추가하면 toDoState에 들어가지만 toDo를 보려고 할 때는
+selector라는 것을 이용하기로 했다.
+
+selector는 state를 가져다가 조금 변형해주는 함수이다.
+
+selector에서 값을 얻어오려면 
+useRecoilValue를 이용해야 한다. 인자로는 selector를 넣을수도 atom을 넣을수도 있다.
+
+selector는 어떤일을 하는가?
+key가 있고 get function 이 있다.
+
+getfunction은 selector가 어떤 것을 반환할지를 결정한다.
+getfunction은 객체로 인자를 받는데 이 객체에는 또 다른 getfubnction이 들어 있고,
+이 함수를 쓰면 원하는 atom을 가져올 수 있다.
+
+---
+
+우리는 selecor 태그를 이용하여 input event를 감지해서 사용자의 선택에 따라 category atom의
+상태를 바꾸고 있다,.
+selector 에서 category를 변경하면 categoryState가 변경된다.
+selecor 는 toDo 들을 가져다가 categoryState 에 맞는 toDo만을 걸러서 반환해준다.
+
+category atom은 selector의 inInput 함수에서 수정되고 있다.
+onInput 함수는 selector의 value를 가져다가 setCategory 함수에 넣어주고 있다.
+
+---
+
+DONE, DOING,TO_DO를 enum을 이용해서 변형해주었다.
+생성시 실제 값은 기본적으로 숫자가 되어서 string으로 설정해주었다.
+enum은 어디에서든 쓸 수 있다. 직접 문자열을 쓸 필요가 없어져 실수를 줄일 수 있다.
+
+
