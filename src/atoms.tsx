@@ -1,27 +1,29 @@
 import { atom, selector } from "recoil";
-//selector 는 atom의 output을 변형시키는 도구이다.
 
 export interface IToDo {
     text: string;
     id: number;
-    category: "TO_DO" | "DOING" | "DONE"; //string;
-    //위 문자열만 받도록 제한한다.
+    category: "TO_DO" | "DOING" | "DONE";
 }
 
+//모든 것을 한번에 보여주지 않고 원하는 카테고리만 보여주도록 할 것이다.
+export const categoryState = atom({
+    key: "category",
+    default: "TO_DO",
+});
+
 export const toDoState = atom<IToDo[]>({
-    //atom 타입이 toDo의 배열임을 알려준다. interface와 함께 있어야 한다.
     key: "toDo",
     default: [],
 });
 
-//atom을 가져다가 output을 받을 수 있다. 그리고 getfunction이 atom을 받을 수 있다.
 export const toDoSelector = selector({
-    //selector를 이용해 각각의 카테고리고 state를 분리하고 싶다.
     key: "toDoSelector",
     get: ({ get }) => {
-        // getfunction이 selector의 내부로 atom을 받을 수 있다.
-        //여기서 return 하는 값이 toDoSelector의 value가 될 것이다.
         const toDos = get(toDoState);
-        return [toDos.filter((toDo) => toDo.category === "TO_DO"), toDos.filter((toDo) => toDo.category === "DOING"), toDos.filter((toDo) => toDo.category === "DONE")];
+        const category = get(categoryState);
+        //카테고리에 따라 하나의 배열만을 반환하도록 하자
+        return toDos.filter((toDo) => toDo.category === category);
+        //코드가 매우 단순해졌다. selector가 toDos랑 category를 받아와서 category에 따라 toDo를 분류해준다.
     },
-}); //filter함수는 배열에서 맞지 않는 원소들을 제거한 배열을 return 한다.
+});
